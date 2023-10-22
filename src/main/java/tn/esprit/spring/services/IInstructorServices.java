@@ -13,6 +13,7 @@ public interface IInstructorServices {
     List<Instructor> retrieveAllInstructors();
 
     Instructor updateInstructor(Instructor instructor);
+    public void removeInstructor(Long numInstructor);
 
     Instructor retrieveInstructor(Long numInstructor);
 
