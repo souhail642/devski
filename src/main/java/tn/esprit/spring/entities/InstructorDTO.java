@@ -33,11 +33,7 @@ public class InstructorDTO implements Serializable {
     @OneToMany
     private Set<Course> courses;
 
-    public InstructorDTO(Long numInstructor, String firstName, String lastName) {
-        this.numInstructor = numInstructor;
-        this.firstName = firstName;
-        this.lastName = lastName;
-    }
+
 }
 
 
