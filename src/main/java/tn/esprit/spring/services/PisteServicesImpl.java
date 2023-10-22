@@ -31,4 +31,10 @@ public class PisteServicesImpl implements  IPisteServices{
     public Piste retrievePiste(Long numPiste) {
         return pisteRepository.findById(numPiste).orElse(null);
     }
+
+
+    @Override
+    public Piste updatePiste(Piste piste) {
+        return pisteRepository.save(piste);
+    }
 }

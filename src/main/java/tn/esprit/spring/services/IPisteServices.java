@@ -1,5 +1,6 @@
 package tn.esprit.spring.services;
 
+
 import tn.esprit.spring.entities.Piste;
 
 import java.util.List;
@@ -13,4 +14,5 @@ public interface IPisteServices {
     void removePiste (Long numPiste);
 
     Piste retrievePiste (Long numPiste);
+    Piste updatePiste(Piste piste);
 }
