@@ -47,3 +47,5 @@ w
 G.idea/sonarlint/issuestore/4/4/442292b8a7efeabbe4cc176709b833b1792140ec,8\6\863e0292fd7e9b3e74dafd6cc01f73ba76346482
 ]
 -src/test/java/tn/esprit/spring/PisteTest.java,3\a\3a3ab733bc6cd4f902de8b989497c4cbc3db20aa
+u
+Esrc/test/java/tn/esprit/spring/GestionStationSkiApplicationTests.java,0\f\0f5ea7723fcc4abcf63acd8ef82f883d15edcff1
