@@ -22,7 +22,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 import static tn.esprit.spring.entities.Color.BLACK;
 @SpringBootTest
-@RunWith(MockitoJUnitRunner.class)
+
 public class PisteTest {
 
     @Mock
