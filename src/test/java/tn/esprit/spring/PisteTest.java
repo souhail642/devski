@@ -77,7 +77,7 @@ public class PisteTest {
         // Mocking : Simuler le comportement de la méthode save dans le repository
         when(pisteRepository.save(piste)).thenReturn(null);
 
-        // Act : Appel de la méthode à tester
+
         Piste result = pisteServices.addPiste(piste);
 
         // Assert : Vérification des résultats
