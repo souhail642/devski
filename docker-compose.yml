@@ -20,7 +20,7 @@ services:
     restart: on-failure
     build: .
     ports:
-      -8085:8085
+      - '8085:8085'
     depends_on:
       - db
 volumes:
