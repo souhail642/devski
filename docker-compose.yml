@@ -1,3 +1,5 @@
+version: "2.3.3"
+
 services:
   db:
     container_name: mysql
@@ -10,7 +12,7 @@ services:
       - MYSQL_ROOT_PASSWORD=
       - MYSQL_DATABASE=SkiStationDB
     ports:
-      - '3306:3306'
+      - 3306:3306
     volumes:
       - mysql:/var/lib/mysql
       - $PWD/mysql/init.sql:/docker-entrypoint-initdb.d/init.sql
@@ -20,7 +22,7 @@ services:
     restart: on-failure
     build: .
     ports:
-      -8085:8085
+      - 8085:8085
     depends_on:
       - db
 volumes:

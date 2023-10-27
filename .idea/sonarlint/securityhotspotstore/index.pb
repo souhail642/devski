@@ -103,3 +103,9 @@ Q.idea/sonarlint/securityhotspotstore/f/7/f7463bda24933d75383e5188060438f67fd6c2
 :
 
 Dockerfile,6\6\6651ddff6eb82c840ced7c1dddee15c6e1913dd4
+t
+Dsrc/main/java/tn/esprit/spring/controllers/CourseRestController.java,7\9\795b2192787c5166cc985268d457ed9c4a8ff685
+b
+2src/main/java/tn/esprit/spring/entities/Skier.java,b\d\bdc6655781bdbe01092718cbdfed14ae0263bea9
+b
+2src/main/java/tn/esprit/spring/entities/Color.java,2\b\2b36abac7d98dfbf184c98da060a1751ca9a1e69
