@@ -17,8 +17,6 @@ w
 G.idea/sonarlint/issuestore/f/7/f7463bda24933d75383e5188060438f67fd6c203,2\9\29d772bc6251af36834dacd3bea982051d34d894
 Å
 Q.idea/sonarlint/securityhotspotstore/5/6/56f8057b79fa08f316148c407b106c02ad2454d9,9\f\9f1fda95d1c52a1e67bd4cf13de26cd083f7309f
-B
-docker-compose.yml,3\5\35b8c13cf2eb2a194eada000eb310d65aed53b2a
 w
 G.idea/sonarlint/issuestore/3/5/35b8c13cf2eb2a194eada000eb310d65aed53b2a,f\a\fa996fb25dd8afe6bf56a281bdff677f139b23bf
 Å

@@ -93,8 +93,6 @@ G.idea/sonarlint/issuestore/1/a/1a7913d153133ffe49405c5db5564abf6aa4948c,5\f\5f
 Q.idea/sonarlint/securityhotspotstore/e/c/ec0f0d52d0d75072d628a4dd9556000bcc4c1f4c,2\1\2112cf51c81ccb8196270c00471821085c95c6af
 Å
 Q.idea/sonarlint/securityhotspotstore/f/7/f7463bda24933d75383e5188060438f67fd6c203,6\4\64fd0ff446654347fd6c237cd183aa5710939bd4
-B
-docker-compose.yml,3\5\35b8c13cf2eb2a194eada000eb310d65aed53b2a
 :
 
 DockerFile,4\0\40f7331d8e28c3c74df3da70560f362ea1796985
