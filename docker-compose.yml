@@ -4,6 +4,7 @@ services:
   db:
     image: mysql:5.7
     restart: unless-stopped
+    env_file: ./.env
     container_name: mysql
     cap_add:
       - SYS_NICE
