@@ -1,13 +1,17 @@
 package tn.esprit.spring;
 
+import lombok.extern.slf4j.Slf4j;
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
+import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 import org.mockito.junit.MockitoJUnitRunner;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
 import tn.esprit.spring.entities.Color;
 import tn.esprit.spring.entities.Piste;
 import tn.esprit.spring.repositories.IPisteRepository;
@@ -21,12 +25,14 @@ import static org.hamcrest.Matchers.any;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 import static tn.esprit.spring.entities.Color.BLACK;
+@Slf4j
+@ExtendWith(SpringExtension.class)
 @SpringBootTest
-
 public class PisteTest {
 
     @Mock
-    private IPisteRepository pisteRepository;
+
+    private IPisteRepository pisteRepository  = Mockito.mock(IPisteRepository.class);
 
     @InjectMocks
     private PisteServicesImpl pisteServices;
