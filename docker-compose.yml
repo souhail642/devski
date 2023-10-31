@@ -2,29 +2,29 @@ version: "3.8"
 
 services:
   db:
-    container_name: mysql
     image: mysql:5.7
+    restart: unless-stopped
+    env_file: ./.env
+    container_name: mysql
     cap_add:
       - SYS_NICE
-    restart: always
     environment:
-      - MYSQL_ALLOW_EMPTY_PASSWORD=1
-      - MYSQL_ROOT_PASSWORD=
+      - MYSQL_ROOT_PASSWORD="root"
       - MYSQL_DATABASE=SkiStationDB
     ports:
-      - '3306:3306'
+      - 3306:3306
     volumes:
       - mysql:/var/lib/mysql
       - $PWD/mysql/init.sql:/docker-entrypoint-initdb.d/init.sql
   spring_app:
     depends_on:
       - db
+    build: ./
     container_name: ski
     image: ski
     restart: on-failure
-    build: .
     ports:
-      - '8085:8085'
+      - 8085:8085
     environment:
       SPRING_APPLICATION_JSON: '{
            "spring.datasource.url"  : "jdbc:mysql://db:3306/SkiStationDB?useSSL=false",
