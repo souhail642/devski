@@ -1,7 +1,7 @@
 package tn.esprit.spring;
 
 import lombok.extern.slf4j.Slf4j;
-import org.junit.Before;
+
 import org.junit.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.runner.RunWith;
@@ -37,13 +37,7 @@ public class PisteTest {
     @InjectMocks
     private PisteServicesImpl pisteServices;
 
-    @Before
 
-    public void setUp() {
-
-        MockitoAnnotations.initMocks(this);
-
-    }
     @Test
     public void testAddPiste() {
         Piste piste = new Piste(1L, "New Piste", BLACK, 1, 2);
