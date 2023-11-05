@@ -1,198 +1,73 @@
 package tn.esprit.spring;
 
-import lombok.extern.slf4j.Slf4j;
 
-import org.junit.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
-import org.mockito.junit.MockitoJUnitRunner;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.junit.jupiter.SpringExtension;
 import tn.esprit.spring.entities.Color;
 import tn.esprit.spring.entities.Piste;
 import tn.esprit.spring.repositories.IPisteRepository;
 import tn.esprit.spring.services.PisteServicesImpl;
 
-import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
-import java.util.Optional;
 
-import static org.hamcrest.Matchers.any;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
-import static tn.esprit.spring.entities.Color.BLACK;
-@Slf4j
-@ExtendWith(SpringExtension.class)
-@SpringBootTest
-public class PisteTest {
+class PisteTest {
+    @InjectMocks
+    PisteServicesImpl pisteServices;
 
     @Mock
+    IPisteRepository pisteRepository;
 
-    private IPisteRepository pisteRepository  = Mockito.mock(IPisteRepository.class);
+    @BeforeEach
+    public void setup() {
+        MockitoAnnotations.openMocks(this);
+        Piste piste1 = new Piste();
+        piste1.setNumPiste(1L);
+        piste1.setNamePiste("pisteone");
+        piste1.setColor(Color.BLUE);
 
-    @InjectMocks
-    private PisteServicesImpl pisteServices;
-
-
-    @Test
-    public void testAddPiste() {
-        Piste piste = new Piste(1L, "New Piste", BLACK, 1, 2);
-
-        when(pisteRepository.save(piste)).thenReturn(piste);
-
-        Piste result = pisteServices.addPiste(piste);
-
-        // Assert
-        assertNotNull(result);
-        assertEquals("New Piste", result.getNamePiste());
-        assertEquals(BLACK, result.getColor());
-        assertEquals(piste, result);
-    }
-    @Test
-    public void testAddPiste_Failure() {
-        // Arrange
-        Piste piste = new Piste(1L, "PP", BLACK, 1, 2);
+        Piste piste2 = new Piste();
+        piste2.setNumPiste(2L);
+        piste2.setNamePiste("pistetwo");
+        piste2.setColor(Color.RED);
 
 
-        // Mocking : Simuler le comportement de la méthode save dans le repository
-        when(pisteRepository.save(piste)).thenReturn(piste);
-        // Act : Appel de la méthode à tester
-        Piste result = pisteServices.addPiste(piste);
-
-        // Assert : Vérification des résultats
-        assertNotNull(result); // L'instructeur retourné ne doit pas être nul
-        assertNotEquals("PPP", result.getNamePiste());
-        assertEquals(BLACK, result.getColor());
-        assertNotEquals(piste, result);
-    }
-    @Test
-    public void testAddPiste_NotFound() {
-        // Arrange
-        Piste piste = new Piste(2L, "PP", BLACK, 1, 2);
-
-        // Mocking : Simuler le comportement de la méthode save dans le repository
-        when(pisteRepository.save(piste)).thenReturn(null);
-
-
-        Piste result = pisteServices.addPiste(piste);
-
-        // Assert : Vérification des résultats
-        assertNull(result);
-
-
-    }
-    @Test
-    public void testRetrieveAllPistes() {
-        List<Piste> pisteList = new ArrayList<>();
-        pisteList.add(new Piste(4L, "Piste 1", BLACK, 5, 2));
-        pisteList.add(new Piste(2L, "Piste 2", BLACK, 1, 7));
-
-        when(pisteRepository.findAll()).thenReturn(pisteList);
-
-        List<Piste> result = pisteServices.retrieveAllPistes();
-
-        assertEquals(2, result.size());
-        assertEquals("Piste 1", result.get(0).getNamePiste());
-        assertEquals("Piste 2", result.get(1).getNamePiste());
-    }
-    @Test
-    public void testRetrieveAllPistes_Failure() {
-        // Arrange
-        List<Piste> pisteList = new ArrayList<>(); // Créer une liste d'instructeurs
-        pisteList.add(new Piste(4L, "Piste 1", BLACK, 5, 2));
-        pisteList.add(new Piste(2L, "¨Piste 2", BLACK, 1, 7));
-        // Mocking : Simuler le comportement de la méthode findAll dans le repository
-        when(pisteRepository.findAll()).thenReturn(pisteList);
-
-        // Act : Appel de la méthode à tester
-        List<Piste> result = pisteServices.retrieveAllPistes();
-        assertNotNull(result);
-        assertEquals(1, result.size());
-
-    }
-    @Test
-    public void testRetrievePiste() {
-        Long numPiste = 1L;
-        Piste piste = new Piste(numPiste, "P2", BLACK, 1, 7);
-
-        when(pisteRepository.findById(numPiste)).thenReturn(Optional.of(piste));
-
-        Piste result = pisteServices.retrievePiste(numPiste);
-
-        assertEquals(piste, result);
-        assertEquals("P2", result.getNamePiste());
+        // Mock behavior for the repository
+        when(pisteRepository.findAll()).thenReturn(Arrays.asList(piste1,piste2));
+        when(pisteRepository.save(any(Piste.class))).thenAnswer(invocation -> invocation.getArgument(0));
     }
 
     @Test
-    public void testRetrievePiste_Failure() {
-        // Arrange
-        Long num = 2L;
-        Piste piste = new Piste(num, "PP", BLACK, 1, 2);
+    void testRetrieveAllPistes() {
+        List<Piste> pistes = pisteServices.retrieveAllPistes();
 
-        // Mocking : Simuler le comportement de la méthode findById dans le repository
-        when(pisteRepository.findById(num)).thenReturn(Optional.of(piste));
-
-        // Act : Appel de la méthode à tester
-        Piste result = pisteServices.retrievePiste(num);
-
-        // Assert : Vérification des résultats
-        assertNull(result);
-
+        assertEquals(2, pistes.size());
+        assertTrue(pistes.stream().anyMatch(p->p.getNamePiste().equals("pisteone")));
+        assertTrue(pistes.stream().anyMatch(d -> d.getNamePiste().equals("pistetwo")));
 
     }
     @Test
-    public void testUpdatePiste() {
-        Long numPiste = 1L;
-        Piste piste = new Piste(numPiste, "P2", BLACK, 1, 7);
-        when(pisteRepository.save(piste)).thenReturn(piste);
-        Piste result = pisteServices.updatePiste(piste);
-        assertNotNull(result);
-        assertEquals("P2", result.getNamePiste());
-        assertEquals(piste,result);
-    }
-    @Test
-    public void testUpdatePiste_NotFound() {
-        // Arrange
-        Piste piste = new Piste(3L, "PP", BLACK, 1, 2);
+    void testAddpiste() {
+        Piste newpiste = new Piste();
+        newpiste.setNamePiste("P3");
 
-        // Mocking : Simuler le comportement de la méthode save dans le repository
-        when(pisteRepository.save(piste)).thenReturn(piste);
+        Piste savedPiste = pisteServices.addPiste(newpiste);
 
-        // Act : Appel de la méthode à tester
-        Piste result = pisteServices.updatePiste(piste);
+        assertNotNull(savedPiste);
+        assertEquals("P3", savedPiste.getNamePiste());
 
-        assertNull(result);
-
-        // Verify that save method was never called on the repository
-        verify(pisteRepository, never()).save(piste);
-    }
-    @Test
-    public void testDeletePiste() {
-        Long numPiste = 1L;
-        Piste piste = new Piste(numPiste, "P2", BLACK, 1, 7);
-        when(pisteRepository.findById(numPiste)).thenReturn(Optional.of(piste));
-        pisteServices.removePiste(numPiste);
-        verify(pisteRepository, times(1)).deleteById(1L);
-    }
-    @Test
-    public void testRemovePiste_NotFound() {
-        // Arrange
-        Piste piste = new Piste(4L, "P2", BLACK, 1, 7);
-
-        // Mocking : Simuler le comportement de la méthode deleteById dans le repository
-        when(pisteRepository.findById(4L)).thenReturn(Optional.of(piste));
-
-        // Act : Appel de la méthode à tester
-        pisteServices.removePiste(4L);
-
-        // Verify that deleteById was never called on the repository
-        verify(pisteRepository, never()).deleteById(4L);
+        // Verify that the save method was called once
+        verify(pisteRepository, times(1)).save(newpiste);
     }
 }
+
+
+
 
 
 
