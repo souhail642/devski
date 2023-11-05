@@ -115,3 +115,7 @@ u
 Esrc/test/java/tn/esprit/spring/GestionStationSkiApplicationTests.java,0\f\0f5ea7723fcc4abcf63acd8ef82f883d15edcff1
 G
 gestion-station-ski.iml,f\a\fa0e12ceb7a43a09e261610526ab120dbc388373
+q
+Asrc/main/java/tn/esprit/spring/repositories/IPisteRepository.java,a\3\a3edb5e4816e44e2b8dbc4c4eaa920490276ccf6
+b
+2src/main/java/tn/esprit/spring/entities/Piste.java,3\1\3109cf28b62c0a51e679e44e6e7d372ec28c8315
