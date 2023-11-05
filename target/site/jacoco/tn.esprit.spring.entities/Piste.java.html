@@ -13,7 +13,7 @@ import lombok.Setter;
 import lombok.experimental.FieldDefaults;
 
 @Getter
-<span class="nc" id="L16">@Setter</span>
+<span class="pc" id="L16">@Setter</span>
 <span class="nc" id="L17">@AllArgsConstructor</span>
 <span class="fc" id="L18">@NoArgsConstructor</span>
 @FieldDefaults(level=AccessLevel.PRIVATE)
@@ -23,7 +23,7 @@ public class Piste implements Serializable {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 <span class="nc" id="L25">	Long numPiste;</span>
-<span class="nc" id="L26">	String namePiste;</span>
+<span class="fc" id="L26">	String namePiste;</span>
 	@Enumerated(EnumType.STRING)
 <span class="nc" id="L28">	Color color;</span>
 <span class="nc" id="L29">	int length;</span>
