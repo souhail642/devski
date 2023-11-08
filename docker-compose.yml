@@ -13,8 +13,8 @@ services:
       MYSQL_ROOT_PASSWORD: root
       MYSQL_DATABASE: stationSki
 
-  stationSki:
-    container_name: stationSki
+  stationski:
+    container_name: stationski
     depends_on:
       - mysqldb
     build: ./
