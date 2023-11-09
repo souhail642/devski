@@ -41,8 +41,6 @@ G.idea/sonarlint/issuestore/c/0/c0c771fb95b26bbe43284f18fba21aa713a0dad5,9\a\9a
 Q.idea/sonarlint/securityhotspotstore/b/3/b390d5addaaa114bbe33e9f5f7c5bd7eb84fb84b,d\f\dffbf71cec954b5a2453566630a51c29c6ef4d18
 w
 G.idea/sonarlint/issuestore/9/9/993e7a7e33b9854fdafb587b29b0358d691a2ce2,5\5\550aee1bf9adb76e46e8c40b46d9ef1a83ae9bae
-Å
-Q.idea/sonarlint/securityhotspotstore/0/f/0f5ea7723fcc4abcf63acd8ef82f883d15edcff1,9\c\9c2356410e9c7c8b7bc1ebbeb878ddee9ceada2a
 w
 G.idea/sonarlint/issuestore/9/f/9fe84ebb15faf917b7def6236dba604453cc61e0,f\0\f0e0f9cec86fe4b939ae22be5264c758801eb28f
 Å
@@ -111,8 +109,6 @@ b
 pom.xml,4\4\442292b8a7efeabbe4cc176709b833b1792140ec
 B
 docker-compose.yml,3\5\35b8c13cf2eb2a194eada000eb310d65aed53b2a
-u
-Esrc/test/java/tn/esprit/spring/GestionStationSkiApplicationTests.java,0\f\0f5ea7723fcc4abcf63acd8ef82f883d15edcff1
 G
 gestion-station-ski.iml,f\a\fa0e12ceb7a43a09e261610526ab120dbc388373
 q
