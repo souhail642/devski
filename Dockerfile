@@ -1,4 +1,4 @@
 FROM openjdk:11
-EXPOSE 8085
-ADD target/gestion-station-ski-1.0.jar gestion-station-ski.jar
-ENTRYPOINT ["java", "-jar", "/gestion-station-ski-1.0.jar"]
+ADD target/SkiStationProject-1.0.jar ski.jar
+ENTRYPOINT ["java", "-jar","ski.jar"]
+EXPOSE 9097
