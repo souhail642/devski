@@ -2,7 +2,6 @@
 
 import java.io.Serializable;
 import java.time.LocalDate;
-import java.util.List;
 import java.util.Set;
 
 import javax.persistence.*;
@@ -16,23 +15,23 @@ import lombok.Setter;
 import lombok.experimental.FieldDefaults;
 
 @Getter
-<span class="nc" id="L19">@Setter</span>
-<span class="nc" id="L20">@AllArgsConstructor</span>
-<span class="nc" id="L21">@NoArgsConstructor</span>
+<span class="nc" id="L18">@Setter</span>
+<span class="nc" id="L19">@AllArgsConstructor</span>
+<span class="nc" id="L20">@NoArgsConstructor</span>
 @FieldDefaults(level=AccessLevel.PRIVATE)
 @Entity
 public class Skier implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-<span class="nc" id="L28">	Long numSkier;</span>
-<span class="nc" id="L29">	String firstName;</span>
-<span class="nc" id="L30">	String lastName;</span>
-<span class="nc" id="L31">	LocalDate dateOfBirth;</span>
-<span class="nc" id="L32">	String city;</span>
+<span class="nc" id="L27">	Long numSkier;</span>
+<span class="nc" id="L28">	String firstName;</span>
+<span class="nc" id="L29">	String lastName;</span>
+<span class="nc" id="L30">	LocalDate dateOfBirth;</span>
+<span class="nc" id="L31">	String city;</span>
 
 	@OneToOne(cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
-<span class="nc" id="L35">	Subscription subscription;</span>
+<span class="nc" id="L34">	Subscription subscription;</span>
 
 	@JsonIgnore
 	@ManyToMany
@@ -40,11 +39,11 @@ public class Skier implements Serializable {
 			name = &quot;excursion&quot;,
 			joinColumns = @JoinColumn(name = &quot;numSkier&quot;),
 			inverseJoinColumns = @JoinColumn(name = &quot;numPiste&quot;))
-<span class="nc" id="L43">	private Set&lt;Piste&gt; pistes;</span>
+<span class="nc" id="L42">	private Set&lt;Piste&gt; pistes;</span>
 
 
 	@OneToMany(mappedBy = &quot;skier&quot;)
-<span class="nc" id="L47">	Set&lt;Registration&gt; registrations;</span>
+<span class="nc" id="L46">	private Set&lt;Registration&gt; registrations;</span>
 
 
 

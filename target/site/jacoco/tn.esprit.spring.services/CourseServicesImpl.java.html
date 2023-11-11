@@ -3,11 +3,10 @@
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import tn.esprit.spring.entities.Course;
-import tn.esprit.spring.entities.TypeCourse;
 import tn.esprit.spring.repositories.ICourseRepository;
 
 import java.util.List;
-<span class="nc" id="L10">@AllArgsConstructor</span>
+<span class="nc" id="L9">@AllArgsConstructor</span>
 @Service
 public class CourseServicesImpl implements  ICourseServices{
 
@@ -15,22 +14,22 @@ public class CourseServicesImpl implements  ICourseServices{
 
     @Override
     public List&lt;Course&gt; retrieveAllCourses() {
-<span class="nc" id="L18">        return courseRepository.findAll();</span>
+<span class="nc" id="L17">        return courseRepository.findAll();</span>
     }
 
     @Override
     public Course addCourse(Course course) {
-<span class="nc" id="L23">        return courseRepository.save(course);</span>
+<span class="nc" id="L22">        return courseRepository.save(course);</span>
     }
 
     @Override
     public Course updateCourse(Course course) {
-<span class="nc" id="L28">        return courseRepository.save(course);</span>
+<span class="nc" id="L27">        return courseRepository.save(course);</span>
     }
 
     @Override
     public Course retrieveCourse(Long numCourse) {
-<span class="nc" id="L33">        return courseRepository.findById(numCourse).orElse(null);</span>
+<span class="nc" id="L32">        return courseRepository.findById(numCourse).orElse(null);</span>
     }
 
 
