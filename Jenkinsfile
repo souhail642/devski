@@ -31,6 +31,7 @@ environment {
            steps {
               withSonarQubeEnv('sq1') {
                sh "mvn sonar:sonar -Dsonar.host.url=http://192.168.1.20:9000/ -Dsonar.login=sqa_cd57e758bcd73fe6a2753e3d82caa12a657da93a"
+                    sh 'mvn test'
              }
                       }
     }
