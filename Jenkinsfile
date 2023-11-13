@@ -26,12 +26,22 @@ environment {
             steps {
                 sh 'mvn clean compile'
         }}
+         stage('JaCoCo Coverage') {
+                    steps {
+                        script {
+
+                            // No need to use 'dir' if the pom.xml is in the root directory
+                            sh 'mvn jacoco:report -DskipTests'
+
+                    }
+                }}
        
       stage("SonarQube analysis'") {
            steps {
               withSonarQubeEnv('sq1') {
+              sh 'mvn test'
                sh "mvn sonar:sonar -Dsonar.host.url=http://192.168.1.20:9000/ -Dsonar.login=sqa_cd57e758bcd73fe6a2753e3d82caa12a657da93a"
-                    sh 'mvn test'
+
              }
                       }
     }
