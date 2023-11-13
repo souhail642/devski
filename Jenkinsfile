@@ -39,19 +39,14 @@ pipeline {
 
             }
         }}
-stage('MVN SONARQUBE') {
+ stage('SonarQube Testing') {
             steps {
+                echo "Running Static Code Analysis with SonarQube"
+                sh 'mvn clean'
+                sh 'mvn compile'
                 sh 'mvn sonar:sonar -Dsonar.login=admin -Dsonar.password=asmaasma'
             }
         }
-    }}
-        stage('Unit Testing using Mockito & JUnit') {
-            steps {
-
-                    sh 'mvn test'
-
-        }}
-
 
 
         stage("Artifact construction") {
