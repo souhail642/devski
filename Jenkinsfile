@@ -43,7 +43,7 @@ pipeline {
         stage('SonarQube analysis') {
                  steps {
                 withSonarQubeEnv('sq1') {
-                    sh "mvn sonar:sonar -Dsonar.host.url=http://192.168.1.20:9000/ -Dsonar.login=squ_91796cdee6f2c88f142b64f56ecaba505f64cc72"
+                    sh "mvn sonar:sonar -Dsonar.host.url=http://192.168.1.13:9000/ -Dsonar.login=squ_91796cdee6f2c88f142b64f56ecaba505f64cc72"
 
 
 
