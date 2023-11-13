@@ -49,7 +49,13 @@ pipeline {
                 sh 'mvn sonar:sonar -Dsonar.login=admin -Dsonar.password=asmaasma'
             }
         }
+  }}
+        stage('Unit Testing using Mockito & JUnit') {
+            steps {
 
+                    sh 'mvn test'
+
+        }}
 
        stage("Artifact construction") {
             steps {
@@ -96,5 +102,13 @@ pipeline {
 
             }
         }
+         stage('start prometheus/grafana'){
+                        steps {
+                         sh "docker start prometheus "
+                          sh "docker start grafana"
+
+                        }
+        }
+
         }
         }
