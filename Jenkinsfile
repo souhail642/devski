@@ -51,12 +51,14 @@ pipeline {
         }
 
 
-     stage("Artifact construction") {
+       stage("Artifact construction") {
             steps {
                 script {
 
                     sh "mvn package -DskipTests=true"
 
+            }
+        }}
             stage('Deploy To Nexus') {
             steps {
                     sh 'mvn deploy'
