@@ -39,12 +39,23 @@ pipeline {
 
             }
         }}
+
+
  stage('SonarQube Testing') {
             steps {
                 echo "Running Static Code Analysis with SonarQube"
                 sh 'mvn clean'
                 sh 'mvn compile'
                 sh 'mvn sonar:sonar -Dsonar.login=admin -Dsonar.password=asmaasma'
+            }
+        }
+    stage('Build Artifact') {
+            steps {
+                echo "Building the Artifact (.jar) using Maven"
+                sh 'chmod +x ./mvnw'
+                sh 'mvn clean package -DskipTests'
+                sh"docker stop 5324f109492e"
+                sh" docker start c73da796b621"
             }
         }
             stage('Deploy To Nexus') {
@@ -54,14 +65,7 @@ pipeline {
         }
 
 
-        stage("Artifact construction") {
-            steps {
-                script {
-
-                    sh "mvn package -DskipTests=true"
-
-            }
-        }}
+       
         
 
 
