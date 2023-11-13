@@ -5,7 +5,6 @@ import java.util.Set;
 
 import javax.persistence.*;
 
-
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -33,4 +32,17 @@ public class Piste implements Serializable {
 	@ManyToMany(mappedBy= "pistes")
 	private Set<Skier> skiers;
 
+	public Piste(Long numPiste, String namePiste, Color color, int length, int slope) {
+		this.numPiste = numPiste;
+		this.namePiste = namePiste;
+		this.color = color;
+		this.length = length;
+		this.slope = slope;
+	}
+	public Piste( String namePiste, Color color, int length, int slope) {
+		this.namePiste = namePiste;
+		this.color = color;
+		this.length = length;
+		this.slope = slope;
+	}
 }
