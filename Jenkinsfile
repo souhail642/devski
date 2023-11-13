@@ -26,12 +26,7 @@ environment {
             steps {
                 sh 'mvn clean compile'
         }}
-           stage('JaCoCo Coverage') {
-            steps {
-                script {
-                    sh 'mvn jacoco:report -DskipTests'
-            }
-        }}
+       
       stage("SonarQube analysis'") {
            steps {
               withSonarQubeEnv('sq1') {
