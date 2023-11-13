@@ -49,7 +49,7 @@ pipeline {
                 sh 'mvn sonar:sonar -Dsonar.login=admin -Dsonar.password=asmaasma'
             }
         }
-  }}
+
         stage('Unit Testing using Mockito & JUnit') {
             steps {
 
