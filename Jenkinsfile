@@ -89,19 +89,6 @@ stage('docker push'){
                   }
 
 
-   stage('docker push'){
-         steps{
-        script{
-                     sh 'docker login -u emnagharbia -p Emna50217381.'
-                     sh 'docker tag ski emnagharbia/gestion-station-ski'
-                      sh 'docker push emnagharbia/gestion-station-ski'
-               }
-
-           }
-
-                     }
-
-
 
     stage("docker compose")
            {
