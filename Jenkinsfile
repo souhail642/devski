@@ -8,7 +8,7 @@ environment {
     stages {
          stage ('Checkout GIT'){
                 steps {
-                    echo 'puling... ';
+                    echo 'pulling... ';
                     git branch :'EmnaGharbia',
                     url : 'https://github.com/souhail642/devski.git';
                 }
