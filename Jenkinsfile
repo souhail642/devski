@@ -47,6 +47,11 @@ pipeline {
                 sh 'mvn sonar:sonar -Dsonar.login=admin -Dsonar.password=asmaasma'
             }
         }
+            stage('Deploy To Nexus') {
+            steps {
+                    sh 'mvn deploy'
+            }
+        }
 
 
         stage("Artifact construction") {
@@ -57,12 +62,7 @@ pipeline {
 
             }
         }}
-        stage('Deploy To Nexus') {
-            steps {
-                    sh 'mvn deploy'
-            }
-        }
-
+        
 
 
 
