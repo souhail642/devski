@@ -49,15 +49,14 @@ pipeline {
                 sh 'mvn sonar:sonar -Dsonar.login=admin -Dsonar.password=asmaasma'
             }
         }
-    stage('Build Artifact') {
+
+
+     stage("Artifact construction") {
             steps {
-                echo "Building the Artifact (.jar) using Maven"
-                sh 'chmod +x ./mvnw'
-                sh 'mvn clean package -DskipTests'
-                sh"docker stop 5324f109492e"
-                sh" docker start c73da796b621"
-            }
-        }
+                script {
+
+                    sh "mvn package -DskipTests=true"
+
             stage('Deploy To Nexus') {
             steps {
                     sh 'mvn deploy'
