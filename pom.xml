@@ -72,7 +72,18 @@
         </repository>
 
     </distributionManagement>
+    <profiles>
+        <profile>
+            <id>sonar</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <properties>
 
+                <sonar.jacoco.reportPath>target/site/jacoco/jacoco.xml</sonar.jacoco.reportPath>
+            </properties>
+        </profile>
+    </profiles>
     <build>
         <plugins>
             <plugin>
