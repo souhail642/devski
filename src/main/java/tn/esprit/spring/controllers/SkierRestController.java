@@ -33,7 +33,7 @@ public class SkierRestController {
     @Operation(description = "Assign Skier To Subscription")
     @PutMapping("/assignToSub/{numSkier}/{numSub}")
     public Skier assignToSubscription(@PathVariable("numSkier")Long numSkier,
-                               @PathVariable("numSub") Long numSub){
+                                      @PathVariable("numSub") Long numSub){
         return skierServices.assignSkierToSubscription(numSkier, numSub);
     }
 

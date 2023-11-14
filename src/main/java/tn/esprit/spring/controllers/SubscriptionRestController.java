@@ -30,7 +30,7 @@ public class SubscriptionRestController {
     public Subscription getById(@PathVariable("id-subscription") Long numSubscription){
         return subscriptionServices.retrieveSubscriptionById(numSubscription);
     }
-    
+
     @Operation(description = "Retrieve Subscriptions by Type")
     @GetMapping("/all/{typeSub}")
     public Set<Subscription> getSubscriptionsByType(@PathVariable("typeSub")TypeSubscription typeSubscription){

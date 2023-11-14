@@ -3,6 +3,7 @@ package tn.esprit.spring.services;
 
 import tn.esprit.spring.entities.Instructor;
 
+
 import java.util.List;
 
 public interface IInstructorServices {
@@ -12,6 +13,7 @@ public interface IInstructorServices {
     List<Instructor> retrieveAllInstructors();
 
     Instructor updateInstructor(Instructor instructor);
+    public void removeInstructor(Long numInstructor);
 
     Instructor retrieveInstructor(Long numInstructor);
 
