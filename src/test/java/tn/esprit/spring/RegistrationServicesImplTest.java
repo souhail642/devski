@@ -94,5 +94,6 @@ public class RegistrationServicesImplTest {
         // Verify that the registration object was saved to the database.
         assertNotNull(savedRegistration);
         assertEquals(course.getNumCourse(), savedRegistration.getCourse().getNumCourse());
+
     }
 }
