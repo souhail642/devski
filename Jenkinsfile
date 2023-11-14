@@ -107,7 +107,13 @@ stage('docker push'){
 
                }
              }
+      stage('Prometheus/Grafana'){
+                        steps {
+                         sh "docker start prometheuss"
+                          sh "docker start grafana"
 
+                        }
+        }
 
        }
    
