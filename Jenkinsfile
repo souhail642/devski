@@ -111,13 +111,24 @@ pipeline {
 
                         }
         }
-        stage('email') {
-
-                  steps{
-
-            mail bcc: '', body: 'build succees', cc: '', from: '', replyTo: '', subject: 'mail sent from jenkins', to: 'rim.chaouch@esprit.tn'
-
-        }
+        post {
+               failure {
+                   // Envoyer un e-mail en cas d'échec de la construction
+                   emailext subject: "Build failed: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]'",
+                             body: """<p>Build ${env.JOB_NAME} [${env.BUILD_NUMBER}] failed.</p>
+                                      <p>See the console output for more information:<a href='http://192.168.1.20:8080/job/devski/${env.BUILD_NUMBER}/console'>${env.BUILD_URL}console</a></p>""",
+                             to: 'rimaachaouch@gmail.com',
+                             mimeType: 'text/html'
+               }
+               success {
+                   // Envoyer un e-mail en cas de réussite de la construction
+                   emailext subject: "Build successful: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]'",
+                             body: """<p>Build ${env.JOB_NAME} [${env.BUILD_NUMBER}] was successful.</p>
+                                      <p>See the console output for more information:<a href='http://192.168.1.20:8080/job/devski/${env.BUILD_NUMBER}/console'>${env.BUILD_URL}console</a></p>""",
+                             to: 'rimaachaouch@gmail.com',
+                             mimeType: 'text/html'
+               }
+           }
 
 
 
