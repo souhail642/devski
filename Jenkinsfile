@@ -111,28 +111,19 @@ pipeline {
 
                         }
         }
+
         stage('email') {
             steps {
                 script {
                     def buildUrl = env.BUILD_URL
-                    def jobName = env.JOB_NAME
-                    def buildNumber = env.BUILD_NUMBER
-                    def emailSubject
-
-                    if (currentBuild.result == 'FAILURE') {
-                        emailSubject = "Failed: $jobName #$buildNumber"
-                    } else {
-                        emailSubject = "Success: $jobName #$buildNumber"
-                    }
-
                     def emailBody = """
-                        <p>Build $jobName [$buildNumber] ${currentBuild.result}.</p>
-                        <p>See the console output for more information: <a href='${env.BUILD_URL}console'>${env.BUILD_URL}console</a></p>
+                        See the console output for more information: ${env.BUILD_URL}console
                     """
+                    def subject = "Build successful: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]'"
 
                     mail(
                         to: 'rim.chaouch@esprit.tn',
-                        subject: emailSubject,
+                        subject: subject,
                         body: emailBody
                     )
                 }
