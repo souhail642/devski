@@ -32,10 +32,7 @@ public class InstructorServicesImpl implements IInstructorServices{
     public Instructor updateInstructor(Instructor instructor) {
         return instructorRepository.save(instructor);
     }
-    @Override
-    public void removeInstructor(Long numInstructor) {
-        instructorRepository.deleteById(numInstructor);
-    }
+
     @Override
     public Instructor retrieveInstructor(Long numInstructor) {
         return instructorRepository.findById(numInstructor).orElse(null);
