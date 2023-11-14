@@ -51,6 +51,24 @@ environment {
                     sh 'mvn test'
 
         }}
+         post {
+        failure {
+            // Envoyer un e-mail en cas d'échec de la construction
+            emailext subject: "Build failed: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]'",
+                      body: """<p>Build ${env.JOB_NAME} [${env.BUILD_NUMBER}] failed.</p>
+                               <p>See the console output for more information: <a href='${env.BUILD_URL}console'>${env.BUILD_URL}console</a></p>""",
+                      to: 'emnagharbia6@gmail.com',
+                      mimeType: 'text/html'
+        }
+        success {
+            // Envoyer un e-mail en cas de réussite de la construction
+            emailext subject: "Build successful: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]'",
+                      body: """<p>Build ${env.JOB_NAME} [${env.BUILD_NUMBER}] was successful.</p>
+                               <p>See the console output for more information: <a href='${env.BUILD_URL}console'>${env.BUILD_URL}console</a></p>""",
+                      to: 'emnagharbia6@gmail.com',
+                      mimeType: 'text/html'
+        }
+    }
 
 
 
