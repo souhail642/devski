@@ -30,6 +30,13 @@ pipeline {
                 sh 'mvn clean compile'
 
         }}
+
+   stage('Unit Testing using Mockito & JUnit') {
+            steps {
+
+                    sh 'mvn test'
+
+        }}
            stage('JaCoCo Coverage') {
             steps {
                 script {
@@ -50,12 +57,7 @@ pipeline {
             }
         }
 
-        stage('Unit Testing using Mockito & JUnit') {
-            steps {
-
-                    sh 'mvn test'
-
-        }}
+     
 
        stage("Artifact construction") {
             steps {
