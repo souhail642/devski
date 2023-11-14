@@ -8,7 +8,6 @@ import tn.esprit.spring.entities.Course;
 import tn.esprit.spring.entities.TypeCourse;
 import tn.esprit.spring.repositories.ICourseRepository;
 import tn.esprit.spring.services.CourseServicesImpl;
-
 import java.util.Arrays;
 import java.util.List;
 
