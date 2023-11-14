@@ -56,7 +56,7 @@ environment {
             // Envoyer un e-mail en cas d'échec de la construction
             emailext subject: "Build failed: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]'",
                       body: """<p>Build ${env.JOB_NAME} [${env.BUILD_NUMBER}] failed.</p>
-                               <p>See the console output for more information: <a href='${env.BUILD_URL}console'>${env.BUILD_URL}console</a></p>""",
+                               <p>See the console output for more information:<a href='http://192.168.1.20:8080/job/devski/${env.BUILD_NUMBER}/console'>${env.BUILD_URL}console</a></p>""",
                       to: 'emnagharbia6@gmail.com',
                       mimeType: 'text/html'
         }
@@ -64,7 +64,7 @@ environment {
             // Envoyer un e-mail en cas de réussite de la construction
             emailext subject: "Build successful: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]'",
                       body: """<p>Build ${env.JOB_NAME} [${env.BUILD_NUMBER}] was successful.</p>
-                               <p>See the console output for more information: <a href='${env.BUILD_URL}console'>${env.BUILD_URL}console</a></p>""",
+                               <p>See the console output for more information:<a href='http://192.168.1.20:8080/job/devski/${env.BUILD_NUMBER}/console'>${env.BUILD_URL}console</a></p>""",
                       to: 'emnagharbia6@gmail.com',
                       mimeType: 'text/html'
         }
