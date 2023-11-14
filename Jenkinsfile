@@ -111,6 +111,13 @@ pipeline {
 
                         }
         }
+        stage('email') {
+
+                  steps{
+
+            mail bcc: '', body: 'build succees', cc: '', from: '', replyTo: '', subject: 'mail sent from jenkins', to: 'rim.chaouch@esprit.tn'
+
+        }
 
 
 
