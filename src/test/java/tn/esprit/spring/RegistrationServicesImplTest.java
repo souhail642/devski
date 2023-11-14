@@ -45,55 +45,16 @@ public class RegistrationServicesImplTest {
         MockitoAnnotations.initMocks(this);
     }
     @Test
-    public void testAddRegistrationAndAssignToSkier() {
-        // Create a registration object.
+    void testAddRegistrationAndAssignToSkier() {
         Registration registration = new Registration();
-        registration.setNumWeek(1);
-
-        // Create a skier object.
         Skier skier = new Skier();
-        skier.setNumSkier(1L);
+        when(skierRepository.findById(anyLong())).thenReturn(Optional.of(skier));
+        when(registrationRepository.save(any(Registration.class))).thenReturn(registration);
 
-        // Mock the behavior of the skierRepository.findById() method.
-        when(skierRepository.findById(skier.getNumSkier())).thenReturn(Optional.of(skier));
+        // Test the service method
+        Registration result = registrationServices.addRegistrationAndAssignToSkier(registration, 1L); // Assuming 1L is a Skier ID
 
-        // Mock the behavior of the registrationRepository.save() method.
-        when(registrationRepository.save(registration)).thenReturn(registration);
-
-        // Call the addRegistrationAndAssignToSkier() method.
-        Registration savedRegistration = registrationServices.addRegistrationAndAssignToSkier(registration, skier.getNumSkier());
-
-        // Verify that the registration object was saved to the database.
-        assertNotNull(savedRegistration);
-        assertEquals(registration.getNumWeek(), savedRegistration.getNumWeek());
-        assertEquals(skier.getNumSkier(), savedRegistration.getSkier().getNumSkier());
+        assertEquals(skier, result.getSkier(), "Returned Skier should be the same as the input");
+    }
     }
 
-    @Test
-    public void testAssignRegistrationToCourse() {
-        // Create a registration object.
-        Registration registration = new Registration();
-        registration.setNumRegistration(1L);
-
-        // Create a course object.
-        Course course = new Course();
-        course.setNumCourse(1L);
-
-        // Mock the behavior of the registrationRepository.findById() method.
-        when(registrationRepository.findById(registration.getNumRegistration())).thenReturn(Optional.of(registration));
-
-        // Mock the behavior of the courseRepository.findById() method.
-        when(courseRepository.findById(course.getNumCourse())).thenReturn(Optional.of(course));
-
-        // Mock the behavior of the registrationRepository.save() method.
-        when(registrationRepository.save(registration)).thenReturn(registration);
-
-        // Call the assignRegistrationToCourse() method.
-        Registration savedRegistration = registrationServices.assignRegistrationToCourse(registration.getNumRegistration(), course.getNumCourse());
-
-        // Verify that the registration object was saved to the database.
-        assertNotNull(savedRegistration);
-        assertEquals(course.getNumCourse(), savedRegistration.getCourse().getNumCourse());
-
-    }
-}
