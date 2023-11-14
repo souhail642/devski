@@ -50,7 +50,67 @@ environment {
 
                     sh 'mvn test'
 
-        }}}
+        }}
+               stage("Artifact construction") {
+            steps {
+                script {
+
+                    sh "mvn package -DskipTests=true"
+
+            }
+        }}
+        stage('Publish to Nexus') {
+            steps {
+
+                echo 'Deploying to Nexus'
+                sh 'mvn clean deploy -Dmaven.test.skip=true'
+
+        }}
+
+
+
+
+         stage('Building our image') {
+               steps{
+           script{
+                         sh "docker build -t ${dockerImageName} ."
+                     }
+               }
+
+      }
+
+stage('docker push'){
+      steps{
+     script{
+                  sh 'docker login -u emnagharbia -p Emna50217381.'
+                  sh 'docker tag ski emnagharbia/gestion-station-ski'
+                   sh 'docker push emnagharbia/gestion-station-ski'
+            }
+
+        }
+
+                  }
+
+
+
+    stage("docker compose")
+           {
+             steps{
+
+
+                 script{
+
+                     sh "docker-compose up -d"
+
+
+                   }
+
+               }
+             }
+
+
+       }
+   
          post {
         failure {
             // Envoyer un e-mail en cas d'échec de la construction
