@@ -50,7 +50,7 @@ environment {
 
                     sh 'mvn test'
 
-        }}
+        }}}
          post {
         failure {
             // Envoyer un e-mail en cas d'échec de la construction
