@@ -30,7 +30,7 @@ class PisteTest {
     }
 
     @Test
-    public void testAddPiste() {
+     void testAddPiste() {
         // Arrange
         Piste piste = new Piste(1L, "New Piste", BLACK, 1, 2);
         when(pisteRepository.save(piste)).thenReturn(piste);
@@ -45,7 +45,7 @@ class PisteTest {
         assertEquals(piste, result);
     }
     @Test
-    public void testRetrievePiste() {
+     void testRetrievePiste() {
         Long numPiste = 1L;
         Piste piste = new Piste(numPiste, "P2", BLACK, 1, 7);
 
@@ -75,7 +75,7 @@ class PisteTest {
     }*/
 
     @Test
-    public void testAddPiste_NotFound() {
+    void testAddPiste_NotFound() {
         // Arrange
         Piste piste = new Piste(2L, "PP", BLACK, 1, 2);
 
@@ -89,7 +89,7 @@ class PisteTest {
     }
 
     @Test
-    public void testRetrieveAllPistes() {
+     void testRetrieveAllPistes() {
         // Arrange
         List<Piste> pisteList = new ArrayList<>();
         pisteList.add(new Piste(4L, "Piste 1", BLACK, 5, 2));
@@ -109,7 +109,7 @@ class PisteTest {
     // Other test methods...
 
     @Test
-    public void testDeletePiste() {
+     void testDeletePiste() {
         // Arrange
         Long numPiste = 1L;
         Piste piste = new Piste(numPiste, "P2", BLACK, 1, 7);
