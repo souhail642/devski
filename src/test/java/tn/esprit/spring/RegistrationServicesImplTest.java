@@ -1,9 +1,11 @@
 package tn.esprit.spring;
 
+import org.junit.Before;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
+import org.mockito.MockitoAnnotations;
 import org.mockito.junit.jupiter.MockitoExtension;
 import tn.esprit.spring.entities.Course;
 import tn.esprit.spring.entities.Registration;
@@ -34,6 +36,14 @@ public class RegistrationServicesImplTest {
     @Mock
     private ICourseRepository courseRepository;
 
+    @Before
+    public void setUp() {
+        // Disable Mockito's JUBL integration.
+        System.setProperty("hibernate.hbm2ddl.auto", "update");
+
+        // Initialize Mockito.
+        MockitoAnnotations.initMocks(this);
+    }
     @Test
     public void testAddRegistrationAndAssignToSkier() {
         // Create a registration object.
