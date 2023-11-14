@@ -111,6 +111,7 @@ pipeline {
 
                         }
         }
+         }
         post {
                failure {
                    // Envoyer un e-mail en cas d'échec de la construction
@@ -132,6 +133,6 @@ pipeline {
 
 
 
-    }
+
 
 }
