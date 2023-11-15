@@ -111,6 +111,16 @@ pipeline {
 
                         }
         }
+stage('Send Email Notification') {
+steps {
+emailext(
+subject: "Build Status: ${currentBuild.currentResult}",
+body: 'The build status is: ${currentBuild.currentResult}',
+to: 'chernisouhail642@gmail.com',
+attachLog: true,
+)
+}
+}
 
         }
         }
